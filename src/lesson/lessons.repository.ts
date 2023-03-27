@@ -4,7 +4,7 @@ import { Lesson } from './lesson.entity';
 import { v4 as uuid } from 'uuid';
 
 @Injectable()
-export class LessonRepository extends Repository<Lesson> {
+export class LessonsRepository extends Repository<Lesson> {
     constructor(dataSource: DataSource) {
         super(Lesson, dataSource.createEntityManager());
     }

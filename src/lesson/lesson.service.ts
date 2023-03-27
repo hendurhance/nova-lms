@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Lesson } from './lesson.entity';
-import { LessonRepository } from './lesson.repository';
+import { LessonsRepository } from './lessons.repository';
 import { CreateLessonInput } from './input/create-lesson.input';
 
 @Injectable()
 export class LessonService {
     constructor(
-        @InjectRepository(LessonRepository)
-        private lessonRepository: LessonRepository,
+        @InjectRepository(LessonsRepository)
+        private lessonsRepository: LessonsRepository,
     ) {}
 
     /**
@@ -16,7 +16,7 @@ export class LessonService {
      * @returns {Promise<Lesson[]>}
      */
     async getLessons(): Promise<Lesson[]> {
-        return this.lessonRepository.find();
+        return this.lessonsRepository.find();
     }
 
     /**
@@ -25,7 +25,7 @@ export class LessonService {
      * @returns {Promise<Lesson>}
      */
     async getLesson(id: string): Promise<Lesson> {
-        return this.lessonRepository.findOneBy({ id });
+        return this.lessonsRepository.findOneBy({ id });
     }
 
     /**
@@ -34,6 +34,6 @@ export class LessonService {
      * @returns {Promise<Lesson>}
      */
     async createLesson(createLessonInput: CreateLessonInput): Promise<Lesson> {
-        return this.lessonRepository.createLesson(createLessonInput);
+        return this.lessonsRepository.createLesson(createLessonInput);
     }
 }

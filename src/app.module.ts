@@ -7,6 +7,7 @@ import { getEnvPath } from './common/helper/env.helper';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmConfigService } from './shared/typeorm.service';
 import { configValidationSchema } from './schema/config.schema';
+import { StudentModule } from './student/student.module';
 
 const envFilePath: string = getEnvPath();
 
@@ -23,6 +24,7 @@ const envFilePath: string = getEnvPath();
             autoSchemaFile: 'schema.gql',
         }),
         LessonModule,
+        StudentModule,
     ],
 })
 export class AppModule {}

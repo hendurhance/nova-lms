@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmOptionsFactory, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { Lesson } from '../lesson/lesson.entity';
+import { Student } from '../student/student.entity';
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
@@ -18,6 +19,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
             logging: true,
             entities: [
                 Lesson, // <-- Add this line
+                Student,
             ],
         };
     }

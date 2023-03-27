@@ -14,3 +14,20 @@ type Lesson {
 type Query {
   lesson: Lesson!
 }
+
+type Mutation {
+  createLesson(createLessonDto: CreateLessonDto!): Lesson!
+}
+
+input CreateLessonDto {
+  name: String!
+  description: String
+  duration: Float!
+  startDate: DateTime!
+  endDate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime

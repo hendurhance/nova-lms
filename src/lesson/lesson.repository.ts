@@ -9,9 +9,9 @@ export class LessonRepository extends Repository<Lesson> {
         super(Lesson, dataSource.createEntityManager());
     }
 
-    async createLesson(createLessonDto: any): Promise<Lesson> {
+    async createLesson(createLessonInput: any): Promise<Lesson> {
         const { name, description, startDate, endDate, duration } =
-            createLessonDto;
+            createLessonInput;
         const lesson = this.create({
             id: uuid(),
             name,

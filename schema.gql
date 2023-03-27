@@ -12,14 +12,14 @@ type Lesson {
 }
 
 type Query {
-  lesson: Lesson!
+  lesson(id: String!): Lesson!
 }
 
 type Mutation {
-  createLesson(createLessonDto: CreateLessonDto!): Lesson!
+  createLesson(createLessonInput: CreateLessonInput!): Lesson!
 }
 
-input CreateLessonDto {
+input CreateLessonInput {
   name: String!
   description: String
   duration: Float!

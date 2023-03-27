@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 
 @InputType()
-export class CreateLessonDto {
+export class CreateLessonInput {
     @Field()
     @IsString()
     @Length(5, 20)

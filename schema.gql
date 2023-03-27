@@ -5,13 +5,14 @@
 type Lesson {
   id: ID!
   name: String!
-  description: String!
+  description: String
   duration: Float!
   startDate: String!
   endDate: String!
 }
 
 type Query {
+  lessons: [Lesson!]!
   lesson(id: String!): Lesson!
 }
 

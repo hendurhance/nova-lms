@@ -8,8 +8,8 @@ export class LessonType {
     @Field()
     name: string;
 
-    @Field()
-    description: string;
+    @Field({ nullable: true })
+    description?: string;
 
     @Field()
     duration: number;

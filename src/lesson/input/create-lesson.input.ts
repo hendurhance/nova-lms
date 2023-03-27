@@ -1,6 +1,7 @@
 import { InputType, Field } from '@nestjs/graphql';
 import {
     IsDate,
+    IsDateString,
     IsNotEmpty,
     IsNumber,
     IsString,
@@ -24,11 +25,11 @@ export class CreateLessonInput {
 
     @Field()
     @IsNotEmpty()
-    @IsDate()
+    @IsDateString()
     startDate: Date;
 
     @Field()
     @IsNotEmpty()
-    @IsDate()
+    @IsDateString()
     endDate: Date;
 }

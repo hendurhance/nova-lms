@@ -12,6 +12,14 @@ export class LessonService {
     ) {}
 
     /**
+     * @description Get all lessons
+     * @returns {Promise<Lesson[]>}
+     */
+    async getLessons(): Promise<Lesson[]> {
+        return this.lessonRepository.find();
+    }
+
+    /**
      * @description Get a lesson by id
      * @param id
      * @returns {Promise<Lesson>}

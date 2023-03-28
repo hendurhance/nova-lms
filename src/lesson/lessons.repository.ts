@@ -3,7 +3,6 @@ import { Repository, DataSource } from 'typeorm';
 import { Lesson } from './lesson.entity';
 import { v4 as uuid } from 'uuid';
 import { AssignStudentsToLessonInput } from './input/assign-students-to-lesson.input';
-import { Student } from '../student/student.entity';
 
 @Injectable()
 export class LessonsRepository extends Repository<Lesson> {
@@ -31,9 +30,9 @@ export class LessonsRepository extends Repository<Lesson> {
     ): Promise<Lesson> {
         const { lessonId, studentIds } = assignStudentsToLessonInput;
         const lesson = await this.findOneBy({ id: lessonId });
-        lesson.students = Array.isArray(lesson.students)
-            ? [...lesson.students, ...studentIds]
-            : [...studentIds];
+        lesson.students = [...lesson.students, ...studentIds];
+        lesson.students = [...new Set(lesson.students)];
+
         return this.save(lesson);
     }
 }

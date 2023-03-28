@@ -4,6 +4,7 @@ import { StudentsRepository } from './students.repository';
 import { CreateStudentInput } from './input/create-student.input';
 import { Student } from './student.entity';
 import { In } from 'typeorm';
+import { UpdateStudentInput } from './input/update-student.input';
 
 @Injectable()
 export class StudentService {
@@ -31,7 +32,7 @@ export class StudentService {
 
     /**
      * @description Create a new student
-     * @param createStudentInput
+     * @param {CreateStudentInput} createStudentInput
      * @returns {Promise<Student>}
      */
     async createStudent(
@@ -40,6 +41,23 @@ export class StudentService {
         return this.studentsRepository.createStudent(createStudentInput);
     }
 
+    /**
+     * @description Update a student
+     * @param {UpdateStudentInput} updateStudentInput
+     * @returns {Promise<Student>}
+     */
+    async updateStudent(
+        updateStudentInput: UpdateStudentInput,
+        id: string,
+    ): Promise<Student> {
+        return this.studentsRepository.updateStudent(updateStudentInput, id);
+    }
+
+    /**
+     * @description Get many students by id
+     * @param {string[]} studentIds
+     * @returns {Promise<Student[]>}
+     */
     async getManyStudents(studentIds: string[]): Promise<Student[]> {
         return this.studentsRepository.find({
             where: {

@@ -1,7 +1,7 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, ID } from '@nestjs/graphql';
+import { IsUUID } from 'class-validator';
 import {
     IsDate,
-    IsDateString,
     IsNotEmpty,
     IsNumber,
     IsString,
@@ -32,4 +32,8 @@ export class CreateLessonInput {
     @IsNotEmpty()
     @IsDate()
     endDate: Date;
+
+    @Field((type) => [ID], { defaultValue: [] })
+    @IsUUID('4', { each: true })
+    students: string[];
 }

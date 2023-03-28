@@ -6,6 +6,9 @@ import { CreateStudentInput } from './input/create-student.input';
 
 @Injectable()
 export class StudentsRepository extends Repository<Student> {
+    aggregate(arg0: { $match: { id: { $in: string[]; }; }; }[]) {
+        throw new Error('Method not implemented.');
+    }
     constructor(dataSource: DataSource) {
         super(Student, dataSource.createEntityManager());
     }

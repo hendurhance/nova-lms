@@ -3,6 +3,7 @@ import { Repository, DataSource } from 'typeorm';
 import { Lesson } from './lesson.entity';
 import { v4 as uuid } from 'uuid';
 import { AssignStudentsToLessonInput } from './input/assign-students-to-lesson.input';
+import { Student } from '../student/student.entity';
 
 @Injectable()
 export class LessonsRepository extends Repository<Lesson> {
@@ -11,7 +12,7 @@ export class LessonsRepository extends Repository<Lesson> {
     }
 
     async createLesson(createLessonInput: any): Promise<Lesson> {
-        const { name, description, startDate, endDate, duration } =
+        const { name, description, startDate, endDate, duration, students } =
             createLessonInput;
         const lesson = this.create({
             id: uuid(),
@@ -20,6 +21,7 @@ export class LessonsRepository extends Repository<Lesson> {
             endDate,
             duration,
             description: description || '',
+            students,
         });
         return this.save(lesson);
     }

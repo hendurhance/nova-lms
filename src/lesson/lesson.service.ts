@@ -4,6 +4,7 @@ import { Lesson } from './lesson.entity';
 import { LessonsRepository } from './lessons.repository';
 import { CreateLessonInput } from './input/create-lesson.input';
 import { AssignStudentsToLessonInput } from './input/assign-students-to-lesson.input';
+import { Student } from '../student/student.entity';
 
 @Injectable()
 export class LessonService {

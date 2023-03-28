@@ -12,7 +12,7 @@ import {
 export class CreateLessonInput {
     @Field()
     @IsString()
-    @Length(5, 20)
+    @Length(2, 20)
     name: string;
 
     @Field({ nullable: true })
@@ -25,11 +25,11 @@ export class CreateLessonInput {
 
     @Field()
     @IsNotEmpty()
-    @IsDateString()
+    @IsDate()
     startDate: Date;
 
     @Field()
     @IsNotEmpty()
-    @IsDateString()
+    @IsDate()
     endDate: Date;
 }
